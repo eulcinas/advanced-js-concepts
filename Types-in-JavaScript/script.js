@@ -52,22 +52,24 @@ Array.isArray([1, 2, 3]);
 //! Arrays in JavaScript are objects
 
 // * Pass By Value vs Pass By Reference
+// Pass by value
 var a = 5;
-var b = a;
+var b = a; // copies the value of "a", not the variable itself
 b++;
 // console.log(a);
 // console.log(b);
 
+// Pass by reference
 let obj2 = {
   name: "Yao",
   password: "123",
 };
-let obj3 = obj2;
+let obj3 = obj2; // by doing this we simply said this is where the object is in memeory
 
-obj3.password = "easypeasy";
+obj3.password = "easypeasy"; // this means that we are changing the password value in memory, where obj2 is also referencing. That's where Pass By Reference comes from
 
-console.log(obj2);
-console.log(obj3);
+// console.log(obj2);
+// console.log(obj3);
 
 var c = [1, 2, 3, 4, 5];
 var d = [].concat(c);
@@ -83,7 +85,7 @@ let obj4 = {
 };
 let clone = Object.assign({}, obj4);
 let clone2 = { ...obj4 }; // shallow cloning where we can clone the 1st layer
-let superClone = JSON.parse(JSON.stringify(obj4));
+let superClone = JSON.parse(JSON.stringify(obj4)); // deep cloning where it clones all layers
 
 // obj4.c = 5;
 obj4.c.deep = "hahah";
@@ -128,4 +130,42 @@ change(number, string, obj5, obj6);
 // * structuredClone
 // https://web.dev/articles/structured-clone
 let structuredCloned = structuredClone(obj4);
-console.log({ structuredCloned });
+// console.log({ structuredCloned });
+
+// * Type Coercion
+
+1 == "1"; // this will result in "true", if it is of a different type it will convert to another type (1==1)
+// In JavaScript it happens when you use double equal sing (==) it means compare the two values and if they have different types try to coer to a single type.
+// If we do three equals (===) it will give us a "false" because it compares two values but doesn't try to coer these values.
+
+if (1) {
+  // console.log(5);
+}
+
+-0 === +0; // this returns true
+Object.is(-0, +0); // this returns false
+
+NaN === NaN; // returns false
+Object.is(NaN, NaN); // returns true
+
+// * Exercise: Type Coercion
+false == ""; // true
+false == []; // true
+false == {}; // false
+"" == 0; // true
+"" == []; // true
+"" == {}; // false
+0 == []; // true
+0 == {}; // false
+0 == null; // false
+
+// * JTS: Dynamic vs Static Typing
+
+function sum(a: number, b: number) {
+  return a + b;
+}
+// this prevents future developers to not make such mistakes as using the sum function with wrong values, like sum('hello', null)
+
+// * JTS: Weakly vs Strongly Typed
+var a = "boooyaa";
+a + 17; // output will be "boooyaa17"

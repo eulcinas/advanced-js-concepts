@@ -86,5 +86,31 @@ objects {}
 arrays []
 functions function (){}
 
-['JavaScript standart built in objects'](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects)
-[`structuredClone()`](https://web.dev/articles/structured-clone)
+- ['JavaScript standart built in objects'](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects)
+- [`structuredClone()`](https://web.dev/articles/structured-clone)
+
+Arrays in JavaScript are objects
+
+Objects in JavaScript are stored in memory and are passed by reference which means we don't copy the values like we did with primitive types.
+
+<mark>Type Coersion</mark>
+==[Type Coersion](https://developer.mozilla.org/en-US/docs/Glossary/Type_coercion)==
+
+`Type Coersion` - means the language converting a certain type to another type.
+
+Do all languages have type coersion? Yes, they do. Because we always need to convert types to do different things.
+
+- [ECMAScript Comparison Algorithm](https://262.ecma-international.org/5.1/#sec-11.9.3)
+- [JS Comparison table](https://dorey.github.io/JavaScript-Equality-Table/)
+- [MDN - Equality comparisons](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness)
+
+Moral of the story:
+Always use 3 equals unless you have a good reason to use 2.
+
+`JTS: Dynamic vs Static Typing`
+For languages such as JavaScript we have dynamic typing where we can type "var a = 100" and it will assing a value of 100, but for static typed languages like C++ we first have to assign an integer and only then we can give a value to it, like "int a;" "a = 100"
+
+`JTS: Weakly vs Strongly Typed`
+JavaScript is dynamically typed language that is weakly typed. It means in JavaScrip we can say "var a = 'boooyaa'" and we can also say "a + 17", output will be "boooyaa17". That is what a weakly typed language does.
+
+Stronlgy typed language will thrown an error saying that you want to add a number to a string.
