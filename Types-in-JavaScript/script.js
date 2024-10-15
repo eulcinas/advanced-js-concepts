@@ -169,3 +169,5 @@ function sum(a: number, b: number) {
 // * JTS: Weakly vs Strongly Typed
 var a = "boooyaa";
 a + 17; // output will be "boooyaa17"
+
+// * JTS: Static Typing In JavaScript

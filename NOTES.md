@@ -1,6 +1,6 @@
 # NOTES
 
-### 2024-09-13
+## 2024-09-13
 
 Javascript uses an engine which is like a translator for our computers.
 Google wanting to be the best search engine in its field, in 2008 released V8 (written in C++, low-lever language) as a Javascript engine so it could run smooth and fast Javascript scripts. Like Google Maps which uses zoom in, zoom out, street view which requires a lot of resources.
@@ -30,14 +30,14 @@ Is Javascript an interpreted language?
 
 - It is true in a way, but it depends on implementation and can be written using a Compiler
 
-### 2024-09-20
+## 2024-09-20
 
 `Memory Heap` - a place to store variables into memory with their dedicated info (number, string, object, ect)
 `Call Stack` - a reagent in memory which operates in “first in last out” mode. It stores functions and variables as your code executes, at each entry state of the stack, also called the stack frame, allows us to know where we are in the code and it runs in “first in last out” mode.
 
 JavaScript is a single threaded programming language. It means that only one set of instructions is executed at a time.
 
-### 2024-09-24
+## 2024-09-24
 
 Example:
 
@@ -53,7 +53,7 @@ Global Object => this === window
 
 In JavaScript our lexical scope (available data + variables where the function was defined) determines our available variables. Not where the function is called (dynamic scope)
 
-### 2024-09-27
+## 2024-09-27
 
 In javascript our lexical scope (available data + variables where the function was defined) determines our available variables. Not where the function is called (dynamic scope)
 
@@ -65,7 +65,7 @@ In javascript our lexical scope (available data + variables where the function w
 
 `DRY` - DON’T REPEAT YOURSELF
 
-### 2024-10-11
+## 2024-10-11
 
 [`JavaScript types`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
 
@@ -114,3 +114,43 @@ For languages such as JavaScript we have dynamic typing where we can type "var a
 JavaScript is dynamically typed language that is weakly typed. It means in JavaScrip we can say "var a = 'boooyaa'" and we can also say "a + 17", output will be "boooyaa17". That is what a weakly typed language does.
 
 Stronlgy typed language will thrown an error saying that you want to add a number to a string.
+
+`JTS: Static Typing In JavaScript`
+"Flow" has Babel as a compiler which coverts ES6 and above code into ES5 and below code to be compatible with older browsers.
+
+TypeScript is a superset of JavaScript, which has its own compiler. TypeScript tries to mimic JavaScript.
+Angular was developed using TypeScript, so TypeScript is a default in Angular.
+
+## 2024-10-15
+
+### The 2 Pillars: Closures and Prototypal Inheritance
+
+This section will overview what are the 2 most important concepts in JavaScript.
+They are quite unique and not available in all languages.
+The 2 pillars are:
+
+1. Closures;
+2. Prototypal Inheritance;
+
+#### Functions Are Objects
+
+Functions in JavaScript are also Objects.
+When we invoke a function we get 2 parameters automatically:
+
+1. "this" keyword
+2. "arguments" keyword - arguments is an array like object that has some weird behaviours for looping and iteration.
+   So we want to avoid using it and instead use something like the "spread opperator".
+
+#### First Class Citizens
+
+Functions are first class citizens in JS, it means 3 things:
+
+1. Functions can be assigned to variables and properties of objects
+2. Pass functions as arguments into a function
+3. We can return function as values from another functions
+
+#### Extra Bits: Functions
+
+#### Higher Order Functions
+
+Higher Order Function - is simply a function that can take a function into an argument or a function that returns another function
