@@ -177,3 +177,84 @@ function sayMyName(){
 Lexical Environment === [[scope]]
 
 Functions is a first class citizen
+
+`Closure in JavaScript`
+A closure is a feature in JavaScript that allows a function to access variables from its outer (lexical) environment even after the outer function has finished executing. In simpler terms, a closure is created when an inner function "remembers" and can still access variables from its outer function, even after the outer function has returned.
+
+`Key Concepts of Closure:`
+
+1. Functions can be returned and still access outer variables: When you return a function from another function, the returned function still has access to the variables declared in the outer function.
+
+2. Lexical scoping: In JavaScript, the scope of a variable is determined by its position in the source code (lexical environment). Closures are tightly linked to lexical scoping, meaning that a function can access variables defined outside of it, within its lexical scope.
+
+3. Persistence of state: Closures are powerful because they allow functions to "remember" the state of variables in their outer scope, which would otherwise be lost when the outer function finishes executing.
+
+`Example of Closure:`
+
+```
+function outer() {
+  let count = 0; // Local variable in the outer function
+
+  function inner() {
+    count++; // Inner function accessing and modifying the outer variable
+    console.log(count);
+  }
+
+  return inner; // Returning the inner function
+}
+
+const increment = outer(); // outer() has finished executing, but the inner function is now assigned to 'increment'
+increment(); // Output: 1
+increment(); // Output: 2
+increment(); // Output: 3
+```
+
+`Important Parts of a Closure:`
+
+1. Outer Function (Enclosing Function): This is the function that creates the environment where some variables live. These variables can be accessed by the inner function. In the above example, outer() is the outer function.
+
+2. Inner Function (Closure): The function that "closes over" (captures) the outer function’s variables. In the example, the inner function forms the closure by accessing and modifying the count variable defined in outer.
+
+3. Preservation of the Lexical Environment: Even though the outer function finishes its execution, its variables (like count) are preserved within the inner function, allowing it to still access and modify count. This is what creates a closure.
+
+4. Encapsulation: Closures are often used to create private variables. The count variable in the example above is essentially "private" because it can only be accessed and modified through the inner function. This allows you to manage state in a controlled way.
+
+`Practical Use Cases for Closures:`
+
+1. Data Privacy: Closures can help hide variables from the global scope, acting as a form of data encapsulation. For example, in JavaScript modules or factory functions, closures are used to create private variables.
+
+2. Function Factories: Closures are used to create functions that share the same outer environment but produce different behaviors.
+
+```
+function makeMultiplier(multiplier) {
+return function(num) {
+return num \* multiplier; // Inner function has access to 'multiplier'
+};
+}
+
+const double = makeMultiplier(2);
+const triple = makeMultiplier(3);
+
+console.log(double(5)); // Output: 10
+console.log(triple(5)); // Output: 15
+```
+
+3. Callback Functions: In asynchronous programming, closures are useful because they allow access to variables even after the outer function has completed.
+
+```
+function delayLog(message, delay) {
+setTimeout(function() {
+console.log(message); // The inner function (callback) "remembers" the message variable
+}, delay);
+}
+
+delayLog("Hello after 2 seconds", 2000); // Logs "Hello after 2 seconds" after 2 seconds
+```
+
+`Summary of Key Points:`
+
+- A closure is when a function "remembers" and can access variables from its outer lexical environment, even after the outer function has finished executing.
+- Closures rely on lexical scoping and allow functions to persist variables across calls.
+- Common use cases include private variables, function factories, and asynchronous callbacks.
+
+Understanding closures is essential in JavaScript because it underpins how variables and functions interact, especially in advanced functional programming patterns.
