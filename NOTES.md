@@ -153,4 +153,27 @@ Functions are first class citizens in JS, it means 3 things:
 
 #### Higher Order Functions
 
-Higher Order Function - is simply a function that can take a function into an argument or a function that returns another function
+Higher Order Function - is simply a function that can take a function into an argument or a function that returns another function.
+
+## 2024-10-22
+
+#### Closures
+
+`Closures` - is one of the 1st pillars of JavaScript. Closure is a combination of functions and Lexical scope.
+
+```
+function sayMyName(){
+   let a = 'a';
+   return function findName(){
+      let b='b';
+      return function printName(){
+         let c='c';
+         return 'Eimantas Ulcinas'
+      }
+   }
+}
+```
+
+Lexical Environment === [[scope]]
+
+Functions is a first class citizen
