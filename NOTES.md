@@ -258,3 +258,9 @@ delayLog("Hello after 2 seconds", 2000); // Logs "Hello after 2 seconds" after 2
 - Common use cases include private variables, function factories, and asynchronous callbacks.
 
 Understanding closures is essential in JavaScript because it underpins how variables and functions interact, especially in advanced functional programming patterns.
+
+## 2024-11-14
+
+#### Prototypes
+
+`Constructor functions` - they usually start with a capital letter, and they contain the actual blueprint (prototype) that we actually use.
