@@ -264,3 +264,129 @@ Understanding closures is essential in JavaScript because it underpins how varia
 #### Prototypes
 
 `Constructor functions` - they usually start with a capital letter, and they contain the actual blueprint (prototype) that we actually use.
+
+In JavaScript, prototypes provide a way for objects to inherit properties and methods from other objects. This is the core of JavaScript's inheritance model, known as prototypal inheritance.
+
+Key Concepts of Prototypes
+Prototype Property: Every JavaScript object has a hidden property called [[Prototype]] that either points to another object or is null. When you access a property on an object, JavaScript will first check the object itself; if the property isn’t found, it will look at the object’s prototype, then its prototype’s prototype, and so on, up the chain, until it reaches an object with a null prototype.
+
+Prototype Chain: The chain of objects linked by the [[Prototype]] property is called the prototype chain. This chain enables inheritance of properties and methods. If a property or method isn’t found on the current object, JavaScript traverses up the prototype chain until it either finds it or reaches the end of the chain (null).
+
+Object.prototype: Almost all objects in JavaScript are ultimately linked to Object.prototype, which is at the top of the prototype chain. This is why all objects inherit basic methods like .toString() and .hasOwnProperty() from Object.prototype.
+
+Creating and Using Prototypes
+In JavaScript, prototypes are usually involved when working with constructor functions or classes:
+
+Constructor Functions
+Constructor functions are regular functions used with the new keyword to create instances. When you use a constructor function, JavaScript sets up the instance’s prototype to reference the constructor’s prototype property.
+
+js
+Copy code
+function Person(name, age) {
+this.name = name;
+this.age = age;
+}
+
+Person.prototype.sayHello = function() {
+console.log("Hello, my name is " + this.name);
+};
+
+const person1 = new Person("Alice", 25);
+const person2 = new Person("Bob", 30);
+
+person1.sayHello(); // Output: Hello, my name is Alice
+person2.sayHello(); // Output: Hello, my name is Bob
+In this example:
+
+Person.prototype contains the shared method sayHello.
+Both person1 and person2 instances inherit from Person.prototype, so they can access sayHello without storing it directly on each instance, conserving memory.
+Classes and class Syntax
+JavaScript's class syntax is essentially syntactic sugar over prototypes. It provides a cleaner, more familiar syntax for defining prototypes and inheritance.
+
+js
+Copy code
+class Animal {
+constructor(name) {
+this.name = name;
+}
+
+speak() {
+console.log(this.name + " makes a noise.");
+}
+}
+
+class Dog extends Animal {
+speak() {
+console.log(this.name + " barks.");
+}
+}
+
+const dog = new Dog("Rex");
+dog.speak(); // Output: Rex barks.
+Here:
+
+Dog inherits from Animal, which means Dog’s prototype chain includes Animal.prototype.
+The dog instance can call methods defined on Animal, like speak.
+Important Parts of Prototypes
+prototype Property on Functions: Every function in JavaScript has a prototype property, which is an object. This property is what instances created by that function’s constructor inherit from.
+
+js
+Copy code
+function Car(make) {
+this.make = make;
+}
+
+console.log(Car.prototype); // Car.prototype is an object
+**proto** (Dunder Proto) / [[Prototype]]: This property (often accessed via **proto**) is present on each object and points to its prototype. This is how an object links up the prototype chain.
+
+js
+Copy code
+const car = new Car("Toyota");
+console.log(car.**proto** === Car.prototype); // true
+Shared Methods and Properties: Methods and properties on the prototype are shared across all instances of the constructor, which conserves memory. Rather than each object having its own copy of a method, they all reference the method on the prototype.
+
+Overriding Prototyped Properties: You can override properties or methods from the prototype on an individual instance, allowing instance-specific behavior. If a property is found directly on an instance, it won’t look up the prototype chain.
+
+js
+Copy code
+car.make = "Honda"; // Overrides the `make` property for this instance only
+Checking for Properties (hasOwnProperty): The hasOwnProperty method checks whether a property exists directly on an object, without traversing up the prototype chain. This is useful for distinguishing between instance properties and inherited properties.
+
+js
+Copy code
+console.log(car.hasOwnProperty("make")); // true
+console.log(car.hasOwnProperty("toString")); // false, since `toString` is from `Object.prototype`
+Why Prototypes Are Important
+Memory Efficiency: Since properties and methods defined on the prototype are shared, they conserve memory by preventing the need for duplicate copies on each instance.
+Inheritance: Prototypes enable inheritance in JavaScript, allowing objects to inherit properties and methods from other objects.
+Dynamic Behavior: You can add properties to prototypes even after creating instances. All instances automatically gain access to newly added properties or methods.
+Summary of Key Points
+Prototype: An object that other objects inherit properties and methods from.
+Prototype Chain: The chain of prototypes that JavaScript follows when looking for a property or method.
+prototype Property: Exists on constructor functions and is used as the blueprint for instances created with new.
+**proto** or [[Prototype]]: Exists on every object and points to its prototype.
+Prototypes are foundational for understanding inheritance and memory efficiency in JavaScript, making them essential for mastering JavaScript's object-oriented concepts.
+
+## 2024-11-18
+
+### Object Oriented Programming and Functional Programming
+
+- Clear + Understandable
+- Easy to Extend
+- Easy to Maintain
+- Memory Efficient
+- DRY
+
+`Java` and `Scheme` were the inspration for `JavaScript`
+
+- Regular function() is dynamically scoped;
+- Arrow function ()=>{} is lexically scoped;
+
+If someone asks if JavaScript has classes, we can say that technically they do, but it's sintactic sugar. The `class` keyword is still prototypal inheritance.
+
+#### 4 pillars of OOP
+
+1. Encapsulation;
+2. Abstraction;
+3. Inheritance;
+4. Polymorphism;
