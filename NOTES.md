@@ -400,7 +400,7 @@ When it comes to Pure Functions there's 2 main things:
 1. A function must return the same output given the same input
 2. The function can not modify anything outside of itself, no side effects.
 
-`The Perfect Function`
+##### The Perfect Function
 
 1. A perfect functoin should do 1 task and 1 task only
 2. It should have a return statement
@@ -416,3 +416,7 @@ Partial Application expects on the second call to have all the arguments.
 Currying expects one argument at a time.
 
 Caching - is a way to store vales so we could use them later on. Ideally you can thing of caching as a bagpack that you take to school.
+
+##### Composing
+
+Composition - is the idea that any sort of data transformation that we do should be obvious.
