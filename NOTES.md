@@ -420,3 +420,15 @@ Caching - is a way to store vales so we could use them later on. Ideally you can
 ##### Composing
 
 Composition - is the idea that any sort of data transformation that we do should be obvious.
+
+#### Asynchronous JavaScript
+
+##### Promises
+
+Promise - is an object that may produce a single value some time in the future. Either a resolved value, or a reson that that it's not resolved (rejected).
+
+A Promise may be in one of 3 possible states:
+
+1. Fullfiled
+2. Rejected
+3. Pending
