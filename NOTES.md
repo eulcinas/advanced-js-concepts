@@ -432,3 +432,5 @@ A Promise may be in one of 3 possible states:
 1. Fullfiled
 2. Rejected
 3. Pending
+
+#### Modules in JavaScript
