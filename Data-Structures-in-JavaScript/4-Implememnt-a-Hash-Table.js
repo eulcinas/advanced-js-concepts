@@ -37,12 +37,17 @@ class HashTable {
     }
     return undefined;
   }
+
+  keys() {
+    const keysArray = [];
+    for (let i = 0; i < this.data.length; i++) {
+      keysArray.push(this.data[i][0][0]);
+    }
+  }
 }
 
 const myHashTable = new HashTable(50);
 myHashTable.set("grapes", 10000);
-myHashTable.get("grapes");
 myHashTable.set("apples", 54);
-myHashTable.get("apples");
-
-// myHashTable._hash("grapes");
+myHashTable.set("oranges", 2);
+myHashTable.keys();
